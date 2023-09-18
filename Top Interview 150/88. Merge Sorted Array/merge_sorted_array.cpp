@@ -38,7 +38,7 @@ int main() {
     vector<int> numbers1 {1,2,2,3,5,6,0,0,0};
     vector<int> numbers2 {2,5,6};
     solution.merge(numbers1, 6, numbers2, 3);
-    char a;
-    cin >> a;
+    system("pause");
+
     return 0;
 }
