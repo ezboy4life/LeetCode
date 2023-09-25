@@ -1,5 +1,5 @@
-- <a href="https://github.com/ezboy4life/LeetCode#pt-br">PT-BR</a>
-- <a href="https://github.com/ezboy4life/LeetCode#en-us">EN-US</a>
+- <a href="https://github.com/ezboy4life/LeetCode#Português">PT-BR</a>
+- <a href="https://github.com/ezboy4life/LeetCode#English">EN</a>
 
 ## Português
 
