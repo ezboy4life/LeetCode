@@ -82,17 +82,25 @@ public:
 
             Input: nums [2,2,2,2,2,9], x == 10
             Output: 5
-            - pega 9
+            - pega 9 (direita)
             - 10 - 9 >= 0 == true
             - true: x == 1 | count == 1;
-            ~ Após isso ele vai bugar e não funcionar, sendo que na verdade tem sim uma solução =(
+            - pega 2 (direita)
+            - 1 - 2 >= 0 == false
+            - pega 2 (direita) ~ Comportamento errado
+            - 1 - 2 >= 0 == false
+            - retorna -1
+            ~ Deveria ter retornado 5
         */
 
         while (x > 0) {
-            if (nums.front() > nums.back()) 
+            if (nums.front() > nums.back()) {
                 num = nums.front();
-            else
+                nums.erase(nums.begin());
+            } else {
                 num = nums.back();
+                nums.erase(nums.end());
+            }
 
             if (x - num >= 0) {
                 x -= num;
@@ -126,6 +134,13 @@ int main() {
     qtd = solution.minOperations(vetor, 10);
     cout << "Qtd de Operacoes: " << qtd << endl << endl;
 
+    vetor = {10,1,10,10,10};    //retorno 4
+    qtd = solution.minOperations(vetor, 40);
+    cout << "Qtd de Operacoes: " << qtd << endl << endl;
+
+    vetor = {2,2,2,2,2,9};    //retorno -1 => deveria ser 5
+    qtd = solution.minOperations(vetor, 40);
+    cout << "Qtd de Operacoes: " << qtd << endl << endl;
 
 
     system("pause");
