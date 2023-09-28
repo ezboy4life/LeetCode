@@ -23,6 +23,7 @@ public:
 };
 
 /*  --- Testes ---
+
     Input: s = "leet2code3", k = 10
     Output: "o"
     OK
@@ -33,7 +34,7 @@ public:
 
     Input: s = "a2345678999999999999999", k = 1
     Output: "a"
-    excede limite de memória do leetcode 
+    ~ excede limite de memória do leetcode 
 
     OBS: Ao invés de simplesmente fazer na força bruta eu acho que esse desafio é mais uma questão de enteder as relações entre o tamanho da string e a qtd de vezes que ela repete
 
