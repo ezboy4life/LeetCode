@@ -14,24 +14,40 @@ struct ListNode {
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        string numStr = "", numStr1 = "";
-        ListNode* nextVar, prevVar;
-        
-        do {
-            numStr = to_string(l1->val) + numStr;
-            l1 = l1->next;
-        } while (l1 != 0);
+        ListNode* result = new ListNode();
+        ListNode* aux = result;
+        bool carry = 0;
+        int sum;
 
-        cout << numStr << " ";
+        while (l1 || l2 || carry) {
+            
+            sum = 0;
+            if (l1) {
+                sum += l1->val;
+                l1 = l1->next;
+            }
 
-        do {
-            numStr1 = to_string(l2->val) + numStr1;
-            l2 = l2->next;
-        } while (l2 != 0);
+            if (l2) {
+                sum += l2->val;
+                l2 = l2->next;
+            }
 
-        cout << numStr1 << " ";
+            if (carry) {
+                sum += carry;
+                carry = 0;
+            }
 
-        return nullptr;
+            if (sum >= 10) {
+                sum -= 10;
+                carry = 1;
+            }
+            
+            ListNode* newNode = new ListNode(sum);
+            aux->next = newNode;
+            aux = newNode;
+        }
+
+        return result->next;
     }
 };
 
@@ -48,9 +64,16 @@ public:
     Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
     Output: [8,9,9,9,0,0,0,1]
 
+    [9]
+    [1,9,9,9,9,X,9,9,9,9]
+
 */
 
 int main() {
+
+
+    cout << stod("9999999991");
+
     Solution solution;
     ListNode ln1;
     ln1.val = 2;
@@ -58,50 +81,44 @@ int main() {
     ln2.val = 4; 
     ListNode ln3;
     ln3.val = 3;
+
     ListNode ln4;
     ln4.val = 5;
     ListNode ln5;
     ln5.val = 6; 
     ListNode ln6;
     ln6.val = 4;
+
+    // ListNode ln7;
+    // ln7.val = 9;
+    // ListNode ln8;
+    // ln8.val = 9;
+    // ListNode ln9;
+    // ln9.val = 9; 
+    // ListNode ln10;
+    // ln10.val = 9;
+
+    // ListNode ln11;
+    // ln11.val = 9;
+
     ln1.next = &ln2;
     ln2.next = &ln3;
+    // ln3.next = &ln4;
     ln4.next = &ln5;
     ln5.next = &ln6;
+    // ln6.next = &ln7;
+    // ln7.next = &ln8;
+    // ln8.next = &ln9;
+    // ln9.next = &ln10;
+    
 
-    solution.addTwoNumbers(&ln1,&ln4);
 
-    ListNode* nextVar;
-
-    nextVar = &ln1;
-    string numStr = "", numStr1 = "";
-
-    do {
-        numStr = to_string(nextVar->val) + numStr;
-        nextVar = nextVar->next;
-    } while (nextVar != 0);
-
-    cout << numStr << endl;
-
-    nextVar = &ln4;
-    do {
-        numStr1 = to_string(nextVar->val) + numStr1;
-        nextVar = nextVar->next;
-    } while (nextVar != 0);
-
-    cout << numStr1 << endl;
-
-    int sum = stoi(numStr) + stoi(numStr1);
-
-    numStr = to_string(sum);
-
-    ListNode* prevVar = NULL;
-
-    for (int i = 0; i < numStr.size() ; i++) {
-        nextVar = new ListNode(numStr[i] - '0', prevVar); //ASCII 51 - 48 
-        prevVar = nextVar;
-    }
+    ListNode* resultado = solution.addTwoNumbers(&ln1,&ln4);
 
     system("pause");
     return 0;
 }
+
+/*
+    O problema consiste em somar os números 1 por 1 e ir criando os ListNodes dessa maneira, não fazend a soma de força bruta e depois convertendo ele em um ListNode! =)
+*/
