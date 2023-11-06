@@ -24,7 +24,7 @@ public:
     }
     
     void unreserve(int seatNumber) {
-        
+        seats[seatNumber - 1].second = false;
     }
 };
 
@@ -33,6 +33,17 @@ public:
 */
 
 int main() {
+    SeatManager* sm = new SeatManager(5);
+    sm->reserve();
+    sm->reserve();
+    sm->unreserve(2);
+    sm->reserve();
+    sm->reserve();
+    sm->reserve();
+    sm->reserve();
+    sm->unreserve(5);
+
+
 
     system("pause");
     return 0;
