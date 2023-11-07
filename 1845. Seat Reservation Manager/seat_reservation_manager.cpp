@@ -1,36 +1,29 @@
 #include <algorithm>
 #include <iostream>
+#include <queue>
 #include <vector>
-#include <unordered_map>
 using namespace std;
 
 class SeatManager {
 private:
-    vector<pair<int,bool>> seats;   /* seatnumber - isReserved */
+    priority_queue<int, vector<int>, greater<int>> seats;
 public:
     SeatManager(int n) {
         for (int i = 1; i <= n; i++) {
-            seats.push_back({i, false});
+            seats.push(i);
         }
     }
     
     int reserve() {
-        for (int i = 0; i < seats.size(); i++) {
-            if (!seats[i].second) {
-                seats[i].second = true;
-                return seats[i].first;
-            }
-        }
+        int seatNumber = seats.top();
+        seats.pop();
+        return seatNumber;
     }
     
     void unreserve(int seatNumber) {
-        seats[seatNumber - 1].second = false;
+        seats.push(seatNumber);
     }
 };
-
-/*
---- Testes ---
-*/
 
 int main() {
     SeatManager* sm = new SeatManager(5);
@@ -43,8 +36,12 @@ int main() {
     sm->reserve();
     sm->unreserve(5);
 
-
-
     system("pause");
     return 0;
 }
+
+/*
+    A solução passada que eu havia utilizado na função "reserve()" não era performática o suficiente, visto que ela iterava sobre todo o vetor
+    de bancos reservados pra achar o menor valor que estava liberado. O ideal é usar a estrutura de dados min_heap, que faz com que a reserva
+    dos bancos fique bem mais eficiente visto que sempre o topo da estrutura min_heap é o menor número possível
+*/
