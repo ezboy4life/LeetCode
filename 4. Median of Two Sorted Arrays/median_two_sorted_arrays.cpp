@@ -32,4 +32,8 @@ int main() {
 /*
     A solução dessa foi na pura intuição mesmo, eu só adicionei os valores do vetor num2 no vetor num1, ordenei, e após isso peguei o centro do vetor.
     Caso o vetor fosse par, ele soma os dois elementos do centro e divide por 2, caso fosse impar ele apenas pega o elemento do centro.
+
+    A solução que o editorial dá (consideravelmente mais inteligente) é de que já que ambos os vetor já estão ordenados não precisamos unir eles
+    e ordená-los novamente, basta apenas termos o tamanho de ambos os vetores (m + n) que assim conseguiremos iterar sobre eles e achar seu(s) mediano(s)
+    sem ter de utilizar da função sort 
 */
