@@ -6,23 +6,21 @@ using namespace std;
 class Solution {
 public:
     int eliminateMaximum(vector<int>& dist, vector<int>& speed) {
-        int eliminatedMonsters = 0;
         vector<double> time;
 
         for (int i = 0; i < dist.size(); i++) {
             time.push_back(double(dist[i]) / double(speed[i]));
         }
-        sort(time.begin(), time.end());
+        sort(time.begin(), time.end());   
+        int eliminatedMonsters = 0;
 
-        while (eliminatedMonsters != dist.size()) {
-            time.erase(time.begin());
-            eliminatedMonsters++;
-            for (int i = 0; i < time.size(); i++) {
-                time[i] -= 1;
-                if (time[i] <= 0)
-                    return eliminatedMonsters;
+        for (int i = 0; i < time.size(); i++) {
+            if (time[i] <= i) {
+                break;
             }
+            eliminatedMonsters++;
         }
+
         return eliminatedMonsters;
     }
 };
