@@ -1,17 +1,26 @@
 #include <iostream>
-#include <cctype>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
 public:
     string sortVowels(string s) {
         vector<char> vowels;
+        vector<int> indexes;
         for (int i = 0; i < s.size(); i++) {
-            if (isVowel(s[i])) 
+            if (isVowel(s[i]))  {
                 vowels.push_back(s[i]);
+                indexes.push_back(i);
+            }
         }
-        return "a";
+
+        sort(vowels.begin(), vowels.end()); 
+
+        for (int i = 0; i < indexes.size(); i++)
+            s[indexes[i]] = vowels[i];
+
+        return s;
     }
 
     bool isVowel(char c) {
@@ -30,9 +39,9 @@ public:
 };
 
 int main() {
+    Solution solution;
+    solution.sortVowels("lEetcOde");
 
-    cout << ('0' == 49);
-
-    system("pause");
+    // system("pause");
     return 0;
 }
