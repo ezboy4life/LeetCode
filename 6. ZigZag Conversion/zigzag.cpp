@@ -14,6 +14,25 @@ public:
     }
 };
 
+/*
+    --- Testes ---
+    -> 01
+
+    Input: s = "PAYPALISHIRING", numRows = 3
+    Output: "PAHNAPLSIIGYIR"
+    
+    -> 02
+
+    Input: s = "PAYPALISHIRING", numRows = 4
+    Output: "PINALSIGYAHRPI"
+    Explanation:
+    P     I    N
+    A   L S  I G
+    Y A   H R
+    P     I
+
+*/
+
 int main() {
     Solution solution;
     solution.convert("PAYPALISHIRING", 3);
