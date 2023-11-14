@@ -1,16 +1,31 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution {
 public:
     string convert(string s, int numRows) {
-        // cout << numRows / 2;
-        // cout << numRows + (numRows / 2);
-        for (int i = 0; i < s.size(); i = i + numRows + (numRows / 2)){
-            cout << s[i];
+        if (numRows == 1)
+            return s;
+        vector<vector<char>> matrix(numRows);
+        int j = 0, inc = 1;
+        string result;
+        for (int i = 0; i < s.size(); i++){
+            matrix[j].push_back(s[i]);
+            if (j == numRows - 1) 
+                inc = -1;
+            if (!j) 
+                inc = 1;
+            j = j + inc;
         }
 
-        return "a";
+        for (int i = 0; i < matrix.size(); i++) {
+            for (int j = 0; j < matrix[i].size(); j++) {
+                result.push_back(matrix[i][j]);
+            }
+        }
+
+        return result;
     }
 };
 
@@ -35,7 +50,7 @@ public:
 
 int main() {
     Solution solution;
-    solution.convert("PAYPALISHIRING", 3);
+    solution.convert("AB", 1);
     
     system("pause");
     return 0;
